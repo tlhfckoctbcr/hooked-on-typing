@@ -1,6 +1,9 @@
 {
   "name": "react-hooks",
   "version": "1.0.0",
+  "scripts": {
+    "start": "webpack-dev-server --mode development"
+  },
   "dependencies": {
     "react": "^16.8.0-alpha.1",
     "react-dom": "^16.8.0-alpha.1"
