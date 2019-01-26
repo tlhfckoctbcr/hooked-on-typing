@@ -1,14 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import "./App.css";
+import Table from "./components/Table/Table";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <div className={"App"}>
-      <button onClick={() => setCount(count + 1)}>{count}</button>
-    </div>
-  )
-}
+const App = () => (
+  <Table
+    title={"Table Title"}
+    columns={[
+      { title: "Name", field: "name" },
+      { title: "Age", field: "age" },
+      { title: "Phone", field: "phone" }
+    ]}
+    data={[
+      {
+        name: "Stuart",
+        age: 30,
+        phone: "843-123-4500"
+      },
+      {
+        name: "Ally",
+        age: 26,
+        phone: "843-123-4412"
+      }
+    ]}
+  />
+);
 
 export default App;
