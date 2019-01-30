@@ -6,7 +6,8 @@
   },
   "dependencies": {
     "react": "^16.8.0-alpha.1",
-    "react-dom": "^16.8.0-alpha.1"
+    "react-dom": "^16.8.0-alpha.1",
+    "react-spring": "^7.2.10"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
