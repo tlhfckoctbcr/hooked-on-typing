@@ -1,0 +1,4 @@
+export const constants = {
+  START_GAME: "START_GAME",
+  PLAYER_VALUE_CHANGE: "PLAYER_VALUE_CHANGE"
+};

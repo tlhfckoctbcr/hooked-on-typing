@@ -1,25 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useReducer } from "react";
 import Board from "../../components/Board";
 import Controls from "../../components/Controls";
 import Menu from "../../components/Menu";
-import { GameContext } from "../../contexts/game.context";
-import { ToonContext } from "../../contexts/toon.context";
+import GameContext from "../../state/contexts/game.context";
+import { ToonContext } from "../../state/contexts/toon.context";
+import GameReducer from "../../state/reducers/game.reducer";
 import KeyPressHelper from "../../utils/KeyPressHelper";
 
 const Game = () => {
-  const [status, setStatus] = useState("inactive");
-  const [player, setPlayer] = useState({ tag: "", lives: 0 });
+  const [state, dispatch] = useReducer(GameReducer, useContext(GameContext));
+
   const [position, setPosition] = useState({ positionX: 0, positionY: 0 });
   const [direction, setDirection] = useState("right");
-
-  function handlePlayerChange(name, value) {
-    setPlayer({ ...player, [name]: value });
-  }
-
-  function handleGameStart() {
-    setPlayer({ ...player, lives: 3 });
-    setStatus("active");
-  }
 
   function handlePositionChange(name, direction, value) {
     setPosition({ ...position, [name]: value });
@@ -47,12 +39,7 @@ const Game = () => {
   return (
     <div {...KeyPressHelper.events} tabIndex={1}>
       <GameContext.Provider
-        value={{
-          status,
-          player,
-          handlePlayerChange,
-          handleGameStart
-        }}
+        value={{ state, dispatch }}
       >
         <Menu />
         <ToonContext.Provider

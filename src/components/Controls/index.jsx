@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ToonContext } from "../../contexts/toon.context";
+import { ToonContext } from "../../state/contexts/toon.context";
 
 const Controls = () => {
   const ship = useContext(ToonContext);
