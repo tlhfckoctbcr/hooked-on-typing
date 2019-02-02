@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import Board from "../../components/Board";
+import Controls from "../../components/Controls";
 import Menu from "../../components/Menu";
 import { GameContext } from "../../contexts/game.context";
-import { ShipContext } from "../../contexts/ship.context";
+import { ToonContext } from "../../contexts/toon.context";
+import KeyPressHelper from "../../utils/KeyPressHelper";
 
 const Game = () => {
   const [status, setStatus] = useState("inactive");
@@ -22,25 +24,45 @@ const Game = () => {
     setPosition({ ...position, [name]: value });
   }
 
+  KeyPressHelper.config({
+    spacebar: () => {
+      console.log("Pew!");
+    },
+    left: () => {
+      handlePositionChange("positionX", position.positionX - 1);
+    },
+    up: () => {
+      handlePositionChange("positionY", position.positionY + 1);
+    },
+    down: () => {
+      handlePositionChange("positionY", position.positionY - 1);
+    },
+    right: () => {
+      handlePositionChange("positionX", position.positionX + 1);
+    }
+  });
+
   return (
-    <GameContext.Provider
-      value={{
-        status,
-        player,
-        handlePlayerChange,
-        handleGameStart
-      }}
-    >
-      <Menu />
-      <ShipContext.Provider
+    <div {...KeyPressHelper.events} tabIndex={1}>
+      <GameContext.Provider
         value={{
-          position,
-          handlePositionChange
+          status,
+          player,
+          handlePlayerChange,
+          handleGameStart
         }}
       >
-        <Board />
-      </ShipContext.Provider>
-    </GameContext.Provider>
+        <Menu />
+        <ToonContext.Provider
+          value={{
+            position
+          }}
+        >
+          <Controls />
+          <Board />
+        </ToonContext.Provider>
+      </GameContext.Provider>
+    </div>
   )
 };
 

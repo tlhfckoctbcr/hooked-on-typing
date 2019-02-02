@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { GameContext } from "../../contexts/game.context";
-import { ShipContext } from "../../contexts/ship.context";
+import { ToonContext } from "../../contexts/toon.context";
 
 const Board = () => {
   const classes = {
@@ -12,7 +12,7 @@ const Board = () => {
   };
 
   const game = useContext(GameContext);
-  const ship = useContext(ShipContext);
+  const ship = useContext(ToonContext);
 
   return (
     <div style={classes.board}>

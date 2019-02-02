@@ -3,7 +3,6 @@ import Button from "../Button";
 import Input from "../Input";
 import { GameContext } from "../../contexts/game.context";
 
-
 const Menu = () => {
   const game = useContext(GameContext);
 
