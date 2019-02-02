@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import GameContext from "../../contexts/game.context";
+import { GameContext } from "../../contexts/game.context";
 
-const Board = ({ ship }) => {
+const Board = () => {
   const classes = {
     board: {
       height: "600px",
@@ -10,11 +10,13 @@ const Board = ({ ship }) => {
     }
   };
 
-  const value = useContext(GameContext);
+  const game = useContext(GameContext);
+
+  console.log(game);
 
   return (
     <div style={classes.board}>
-      {value}
+
     </div>
   )
 };

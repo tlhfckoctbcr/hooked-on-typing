@@ -1,10 +1,7 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
 import Board from "../../components/Board";
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import Ship from "../../components/Ship";
-
-import GameContext from "../../contexts/game.context";
+import Menu from "../../components/Menu";
+import { GameContext } from "../../contexts/game.context";
 
 const Game = () => {
   const [status, setStatus] = useState("inactive");
@@ -20,24 +17,16 @@ const Game = () => {
   }
 
   return (
-    <GameContext.Provider value={10}>
-      <Input
-        label={"Player Name: "}
-        name={"tag"}
-        value={player.tag}
-        handleValueChange={handlePlayerChange}
-      />
-      <Button
-        disabled={false}
-        label={"Start"}
-        handleClick={handleGameStart}
-      />
-      <p>Game Status: {status}</p>
-      <p>Lives: {player.lives}</p>
-
-      <Board
-        ship={<Ship />}
-      />
+    <GameContext.Provider
+      value={{
+        status,
+        player,
+        handlePlayerChange,
+        handleGameStart
+      }}
+    >
+      <Menu />
+      <Board />
     </GameContext.Provider>
   )
 };
