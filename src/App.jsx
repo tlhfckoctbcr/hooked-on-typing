@@ -1,12 +1,7 @@
-import React from 'react'
-import './App.css'
+import React from "react"
+import Game from "./containers/Game";
+import "./App.css"
 
-import Goo from "./components/Goo/Goo"
+const App = () => <Game />;
 
-export default function App() {
-  return (
-    <div style={{ width: "100px", height: "100px" }}>
-      <Goo />
-    </div>
-  )
-}
+export default App;
