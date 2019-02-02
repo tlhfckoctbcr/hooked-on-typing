@@ -1,18 +1,19 @@
 import React, { useContext } from "react";
-import { ToonContext } from "../../state/contexts/toon.context";
+import ToonContext from "../../state/contexts/toon.context";
 
 const Toon = () => {
-  const toon = useContext(ToonContext);
+  const { state, dispatch } = useContext(ToonContext);
+
   return (
     <div style={{
       height: "50px",
       width: "50px",
       backgroundColor: "red",
       position: "relative",
-      top: -toon.position.positionY,
-      left: toon.position.positionX
+      top: -state.position.positionY,
+      left: state.position.positionX
     }}>
-      {toon.direction}
+      {state.direction}
     </div>
   );
 };

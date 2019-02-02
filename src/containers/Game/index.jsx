@@ -3,20 +3,14 @@ import Board from "../../components/Board";
 import Controls from "../../components/Controls";
 import Menu from "../../components/Menu";
 import GameContext from "../../state/contexts/game.context";
-import { ToonContext } from "../../state/contexts/toon.context";
+import ToonContext from "../../state/contexts/toon.context";
 import GameReducer from "../../state/reducers/game.reducer";
+import ToonReducer from "../../state/reducers/toon.reducer";
 import KeyPressHelper from "../../utils/KeyPressHelper";
 
 const Game = () => {
-  const [state, dispatch] = useReducer(GameReducer, useContext(GameContext));
-
-  const [position, setPosition] = useState({ positionX: 0, positionY: 0 });
-  const [direction, setDirection] = useState("right");
-
-  function handlePositionChange(name, direction, value) {
-    setPosition({ ...position, [name]: value });
-    setDirection(direction);
-  }
+  const [gameState, gameDispatch] = useReducer(GameReducer, useContext(GameContext));
+  const [toonState, toonDispatch] = useReducer(ToonReducer, useContext(ToonContext));
 
   KeyPressHelper.config({
     spacebar: () => {
@@ -39,13 +33,16 @@ const Game = () => {
   return (
     <div {...KeyPressHelper.events} tabIndex={1}>
       <GameContext.Provider
-        value={{ state, dispatch }}
+        value={{
+          state: gameState,
+          dispatch: gameDispatch
+        }}
       >
         <Menu />
         <ToonContext.Provider
           value={{
-            position,
-            direction
+            state: toonState,
+            dispatch: toonDispatch
           }}
         >
           <Controls />

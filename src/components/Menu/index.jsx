@@ -6,6 +6,7 @@ import { constants } from "../../state/constants";
 
 const Menu = () => {
   const { state, dispatch } = useContext(GameContext);
+  console.log(state);
 
   return (
     <>
@@ -13,7 +14,12 @@ const Menu = () => {
         label={"Player Name: "}
         name={"tag"}
         value={state.player.tag}
-        handleValueChange={() => dispatch({ type: constants.PLAYER_VALUE_CHANGE })}
+        handleValueChange={(name, value) => dispatch({
+            type: constants.PLAYER_VALUE_CHANGE,
+            name,
+            value
+          })
+        }
       />
       <Button
         disabled={false}

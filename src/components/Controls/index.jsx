@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { ToonContext } from "../../state/contexts/toon.context";
+import ToonContext from "../../state/contexts/toon.context";
 
 const Controls = () => {
-  const ship = useContext(ToonContext);
+  const { state } = useContext(ToonContext);
 
   return (
-    <>{ship.position.positionX} {ship.position.positionY}</>
+    <>{state.position.positionX} {state.position.positionY}</>
   );
 };
 
