@@ -10,6 +10,7 @@ const Game = () => {
   const [status, setStatus] = useState("inactive");
   const [player, setPlayer] = useState({ tag: "", lives: 0 });
   const [position, setPosition] = useState({ positionX: 0, positionY: 0 });
+  const [direction, setDirection] = useState("right");
 
   function handlePlayerChange(name, value) {
     setPlayer({ ...player, [name]: value });
@@ -20,25 +21,26 @@ const Game = () => {
     setStatus("active");
   }
 
-  function handlePositionChange(name, value) {
+  function handlePositionChange(name, direction, value) {
     setPosition({ ...position, [name]: value });
+    setDirection(direction);
   }
 
   KeyPressHelper.config({
     spacebar: () => {
-      console.log("Pew!");
+
     },
     left: () => {
-      handlePositionChange("positionX", position.positionX - 1);
+      handlePositionChange("positionX", "left", position.positionX - 15);
     },
     up: () => {
-      handlePositionChange("positionY", position.positionY + 1);
+      handlePositionChange("positionY", "up", position.positionY + 15);
     },
     down: () => {
-      handlePositionChange("positionY", position.positionY - 1);
+      handlePositionChange("positionY", "down", position.positionY - 15);
     },
     right: () => {
-      handlePositionChange("positionX", position.positionX + 1);
+      handlePositionChange("positionX", "right", position.positionX + 15);
     }
   });
 
@@ -55,7 +57,8 @@ const Game = () => {
         <Menu />
         <ToonContext.Provider
           value={{
-            position
+            position,
+            direction
           }}
         >
           <Controls />

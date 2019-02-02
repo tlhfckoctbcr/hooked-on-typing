@@ -1,22 +1,14 @@
-import React, { useContext } from "react";
-import { GameContext } from "../../contexts/game.context";
-import { ToonContext } from "../../contexts/toon.context";
+import React from "react";
+import Toon from "../Toon";
 
 const Board = () => {
-  const classes = {
-    board: {
+  return (
+    <div style={{
       height: "600px",
       width: "100%",
       backgroundColor: "white"
-    }
-  };
-
-  const game = useContext(GameContext);
-  const ship = useContext(ToonContext);
-
-  return (
-    <div style={classes.board}>
-      {ship.position.positionY} {game.status}
+    }}>
+      <Toon />
     </div>
   )
 };
