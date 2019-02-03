@@ -23,9 +23,15 @@ const BoardReducer = (state, action) => {
     case constants.KEY_PRESS_SUCCESS:
       return {
         ...state,
+        error: false,
         activeWordLetterIndex: action.payload
       };
     case constants.KEY_PRESS_FAILURE:
+      return {
+        ...state,
+        error: true,
+        errorCounter: state.errorCounter + 1
+      };
     default:
       return state;
   }

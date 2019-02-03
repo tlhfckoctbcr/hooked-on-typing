@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+
 html,
 body,
 #root {
@@ -5,11 +7,11 @@ body,
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: darkgray;
+    background-color: #444;
 }
 
 body {
-    font-family: roboto, sans-serif;
+    font-family: "Press Start 2P", serif;
     background: transparent;
     user-select: none;
     cursor: default;
@@ -23,13 +25,12 @@ body {
 .boardContainer {
     height: 600px;
     width: 100%;
-    font-size: 180px;
+    font-size: 100px;
     background-color: #222222;
     color: white;
 }
 
 .wordContainer {
     position: absolute;
-    top: 250px;
     left: 50px;
 }

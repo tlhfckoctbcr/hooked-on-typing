@@ -1,6 +1,7 @@
 import React, { createContext } from "react";
 
 const BoardContext = createContext({
+  error: false,
   lastKeyPress: "",
   pressCounter: 0,
   errorCounter: 0,

@@ -6,39 +6,47 @@ import Word from "../../components/Word";
 
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
+  const { words, activeWordIndex, activeWordLetterIndex, lastKeyPress, pressCounter, error } = state;
 
   KeyPressHelper.dispatch = value =>
     dispatch({ type: constants.CHANGE_LAST_KEY_PRESS, payload: value });
 
-  // Initialize and collect words for the game
   useEffect(() =>
     dispatch({ type: constants.GET_WORD_LIST }), []);
 
-  // LastKeyPress Water
   useEffect(() => {
-    if (!state.words.length) return;
+    if (!words.length) return;
 
-    const activeWord = state.words[state.activeWordIndex];
-    const activeLetter = activeWord[state.activeWordLetterIndex];
+    const activeWord = words[activeWordIndex];
+    const activeLetter = activeWord[activeWordLetterIndex];
 
-    if (state.lastKeyPress === activeLetter) {
-      if (activeWord.length === state.activeWordLetterIndex + 1)
-        dispatch({ type: constants.CHANGE_ACTIVE_WORD, payload: state.activeWordIndex + 1 });
+    if (lastKeyPress === activeLetter) {
+      if (activeWord.length === activeWordLetterIndex + 1)
+        dispatch({ type: constants.CHANGE_ACTIVE_WORD, payload: activeWordIndex + 1 });
       else
-        dispatch({ type: constants.KEY_PRESS_SUCCESS, payload: state.activeWordLetterIndex + 1 });
+        dispatch({ type: constants.KEY_PRESS_SUCCESS, payload: activeWordLetterIndex + 1 });
     } else {
       dispatch({ type: constants.KEY_PRESS_FAILURE });
     }
-  }, [state.pressCounter]);
+  }, [pressCounter]);
 
   return (
     <div {...KeyPressHelper.events} className="boardContainer" tabIndex={0}>
       {
-        !!state.words.length &&
-        <Word
-          word={state.words[state.activeWordIndex]}
-          letterIndex={state.activeWordLetterIndex}
-        />
+        !!words.length &&
+          <>
+            {
+              [...Array(3)].map((_, i) => (
+                <Word
+                  key={i}
+                  word={words[activeWordIndex+(i)]}
+                  letterIndex={activeWordLetterIndex}
+                  positionIndex={i}
+                  error={error}
+                />
+              ))
+            }
+          </>
       }
     </div>
   )
