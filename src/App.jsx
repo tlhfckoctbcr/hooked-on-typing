@@ -1,7 +1,24 @@
-import React from "react"
-import Game from "./containers/Game";
-import "./App.css"
+import React, { useContext, useReducer } from "react";
+import Board from "./containers/Board";
+import Score from "./containers/Score";
+import GameContext from "./state/game.context";
+import GameReducer from "./state/game.reducer";
+import "./App.css";
 
-const App = () => <Game />;
+export default function App() {
+  const [state, dispatch] = useReducer(GameReducer, useContext(GameContext));
 
-export default App;
+  return (
+    <div className="gameContainer">
+      <GameContext.Provider
+        value={{
+          state: state,
+          dispatch: dispatch
+        }}
+      >
+        <Board />
+        <Score />
+      </GameContext.Provider>
+    </div>
+  )
+};

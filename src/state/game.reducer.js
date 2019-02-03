@@ -1,32 +1,39 @@
-import { constants } from "../constants";
+import { gameConstants } from "./game.constants";
+import { initialState } from "./initialState";
 import randomWords from "random-words";
 
-const BoardReducer = (state, action) => {
+const GameReducer = (state, action) => {
   switch (action.type) {
-    case constants.GET_WORD_LIST:
+    case gameConstants.START_GAME:
       return {
         ...state,
+        active: true,
         words: randomWords(100)
       };
-    case constants.CHANGE_LAST_KEY_PRESS:
+    case gameConstants.RESET_GAME:
+      return {
+        ...initialState,
+        active: false
+      };
+    case gameConstants.CHANGE_LAST_KEY_PRESS:
       return {
         ...state,
         lastKeyPress: action.payload,
         pressCounter: state.pressCounter + 1
       };
-    case constants.CHANGE_ACTIVE_WORD:
+    case gameConstants.CHANGE_ACTIVE_WORD:
       return {
         ...state,
         activeWordIndex: action.payload,
         activeWordLetterIndex: 0
       };
-    case constants.KEY_PRESS_SUCCESS:
+    case gameConstants.KEY_PRESS_SUCCESS:
       return {
         ...state,
         error: false,
         activeWordLetterIndex: action.payload
       };
-    case constants.KEY_PRESS_FAILURE:
+    case gameConstants.KEY_PRESS_FAILURE:
       return {
         ...state,
         error: true,
@@ -37,4 +44,4 @@ const BoardReducer = (state, action) => {
   }
 };
 
-export default BoardReducer;
+export default GameReducer;

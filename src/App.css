@@ -28,6 +28,9 @@ body {
     font-size: 100px;
     background-color: #222;
     color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .scoreContainer {
@@ -52,4 +55,29 @@ body {
 .wordContainer {
     position: absolute;
     left: 50px;
+}
+
+.resetButton {
+    background-color: #222;
+    border: 1px solid #222;
+    display: inline-block;
+    cursor: pointer;
+    color: #EEE;
+    font-family: "Press Start 2P", serif;
+    font-size: 80px;
+    padding: 12px 24px;
+    text-decoration: none;
+}
+.resetButton:hover {
+    background-color: #EEE;
+    border: 1px solid #EEE;
+    color: #222;
+}
+.resetButton:active {
+    position:relative;
+    top:1px;
+}
+
+.start {
+    font-size: 50px;
 }

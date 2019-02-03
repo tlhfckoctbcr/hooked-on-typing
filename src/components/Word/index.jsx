@@ -15,11 +15,11 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
     for (const [index, letter] of oldText.entries()) {
       if (positionIndex === 0) {
         if (index === letterIndex)
-          style = error
+          style = error && letterIndex
             ? { color: "red", backgroundColor: "black" }
             : { color: "#333", backgroundColor: "black" };
         else if (index < letterIndex)
-          style = { color: "green" };
+          style = { color: "#222" };
         else
           style = { color: "#EEE" };
       } else {

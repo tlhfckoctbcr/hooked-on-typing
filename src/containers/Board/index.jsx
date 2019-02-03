@@ -1,37 +1,44 @@
 import React, { useContext, useEffect } from "react";
-import BoardContext from "../../state/contexts/board.context";
-import { constants } from "../../state/constants";
+import GameContext from "../../state/game.context";
+import { gameConstants } from "../../state/game.constants";
 import KeyPressHelper from "../../utils/KeyPressHelper";
 import Word from "../../components/Word";
 
 export default function Board() {
-  const { state, dispatch } = useContext(BoardContext);
-  const { words, activeWordIndex, activeWordLetterIndex, lastKeyPress, pressCounter, error } = state;
+  const { state, dispatch } = useContext(GameContext);
+  const { active, error, activeWordIndex, activeWordLetterIndex, lastKeyPress, pressCounter, words } = state;
 
-  KeyPressHelper.dispatch = value =>
-    dispatch({ type: constants.CHANGE_LAST_KEY_PRESS, payload: value });
-
-  useEffect(() =>
-    dispatch({ type: constants.GET_WORD_LIST }), []);
+  KeyPressHelper.dispatch = value => {
+    if (value === "enter" && !active)
+      dispatch({ type: gameConstants.START_GAME });
+    else
+      if (active)
+      dispatch({ type: gameConstants.CHANGE_LAST_KEY_PRESS, payload: value });
+  };
 
   useEffect(() => {
-    if (!words.length) return;
+    document.getElementById("board").focus();
+  }, []);
+
+  useEffect(() => {
+    if (!words.length || !active)
+      return;
 
     const activeWord = words[activeWordIndex];
     const activeLetter = activeWord[activeWordLetterIndex];
 
     if (lastKeyPress === activeLetter) {
       if (activeWord.length === activeWordLetterIndex + 1)
-        dispatch({ type: constants.CHANGE_ACTIVE_WORD, payload: activeWordIndex + 1 });
+        dispatch({ type: gameConstants.CHANGE_ACTIVE_WORD, payload: activeWordIndex + 1 });
       else
-        dispatch({ type: constants.KEY_PRESS_SUCCESS, payload: activeWordLetterIndex + 1 });
+        dispatch({ type: gameConstants.KEY_PRESS_SUCCESS, payload: activeWordLetterIndex + 1 });
     } else {
-      dispatch({ type: constants.KEY_PRESS_FAILURE });
+      dispatch({ type: gameConstants.KEY_PRESS_FAILURE });
     }
   }, [pressCounter]);
 
   return (
-    <div {...KeyPressHelper.events} className="boardContainer" tabIndex={0}>
+    <div {...KeyPressHelper.events} id="board" className="boardContainer" tabIndex={0}>
       {
         !!words.length &&
           <>
@@ -47,6 +54,12 @@ export default function Board() {
               ))
             }
           </>
+      }
+      {
+        !words.length &&
+          <div className="start">
+            Press enter to begin.
+          </div>
       }
     </div>
   )

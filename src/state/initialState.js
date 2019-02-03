@@ -1,6 +1,5 @@
-import React, { createContext } from "react";
-
-const BoardContext = createContext({
+export const initialState = {
+  active: false,
   error: false,
   lastKeyPress: "",
   pressCounter: 0,
@@ -8,6 +7,4 @@ const BoardContext = createContext({
   activeWordIndex: 0,
   activeWordLetterIndex: 0,
   words: []
-});
-
-export default BoardContext;
+};
