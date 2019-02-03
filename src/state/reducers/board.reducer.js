@@ -2,12 +2,8 @@ import { constants } from "../constants";
 
 const BoardReducer = (state, action) => {
   switch (action.type) {
-    case constants.CHANGE_POSITION:
-      console.log("Change Position");
-      return {...state, position: action.payload};
-    case constants.CHANGE_DIRECTION:
-      console.log("Change Direction");
-      return {...state, direction: action.payload};
+    case constants.CHANGE_LAST_KEY_PRESS:
+      return { ...state, lastKeyPress: action.payload };
     default:
       return state;
   }

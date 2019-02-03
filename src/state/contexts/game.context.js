@@ -1,11 +1,7 @@
 import React, { createContext } from "react";
 
 const GameContext = createContext({
-  status: "inactive",
-  player: {
-    tag: "",
-    lives: 0
-  }
+  status: "inactive"
 });
 
 export default GameContext;

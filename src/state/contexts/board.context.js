@@ -1,11 +1,10 @@
 import React, { createContext } from "react";
 
 const BoardContext = createContext({
-  position: {
-    positionX: 0,
-    positionY: 0
-  },
-  direction: "right"
+  lastKeyPress: "",
+  enemies: ["foo", "bar", "baz", "sit", "poo"],
+  activeEnemyIndex: 0,
+  activeEnemyLetterIndex: 0
 });
 
 export default BoardContext;

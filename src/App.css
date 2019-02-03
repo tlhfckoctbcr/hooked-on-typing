@@ -9,8 +9,7 @@ body,
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica neue, helvetica,
-    ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+    font-family: roboto, sans-serif;
     background: transparent;
     user-select: none;
     cursor: default;
@@ -19,4 +18,18 @@ body {
 .gameContainer {
     width: 100%;
     height: 100%;
+}
+
+.boardContainer {
+    height: 600px;
+    width: 100%;
+    font-size: 64px;
+    background-color: #222222;
+    color: white;
+}
+
+.enemyContainer {
+    position: absolute;
+    top: 250px;
+    left: 50%;
 }

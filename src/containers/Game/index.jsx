@@ -1,39 +1,39 @@
 import React, { useContext, useReducer } from "react";
-import Board from "../../components/Board";
-import Controls from "../../components/Controls";
-import Menu from "../Menu";
+import Board from "../Board";
 import GameContext from "../../state/contexts/game.context";
 import BoardContext from "../../state/contexts/board.context";
+import ShipContext from "../../state/contexts/ship.context";
 import GameReducer from "../../state/reducers/game.reducer";
 import BoardReducer from "../../state/reducers/board.reducer";
-import { constants } from "../../state/constants";
-import KeyPressHelper from "../../utils/KeyPressHelper";
+import ShipReducer from "../../state/reducers/ship.reducer";
 
 const Game = () => {
   const [gameState, gameDispatch] = useReducer(GameReducer, useContext(GameContext));
   const [boardState, boardDispatch] = useReducer(BoardReducer, useContext(BoardContext));
-
-  KeyPressHelper.config({
-    dispatch: value => gameDispatch({ type: constants.INPUT_VALUE_CHANGE, payload: value })
-  });
+  const [shipState, shipDispatch] = useReducer(ShipReducer, useContext(ShipContext));
 
   return (
-    <div className="gameContainer" {...KeyPressHelper.events} tabIndex={1}>
+    <div className="gameContainer">
       <GameContext.Provider
         value={{
           state: gameState,
           dispatch: gameDispatch
         }}
       >
-        <Menu />
         <BoardContext.Provider
           value={{
             state: boardState,
             dispatch: boardDispatch
           }}
         >
-          <Controls />
-          <Board />
+          <ShipContext.Provider
+            value={{
+              state: shipState,
+              dispatch: shipDispatch
+            }}
+          >
+            <Board />
+          </ShipContext.Provider>
         </BoardContext.Provider>
       </GameContext.Provider>
     </div>
