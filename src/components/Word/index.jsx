@@ -1,11 +1,11 @@
 import React from "react";
 
-const Enemy = ({ enemy, letterIndex }) => {
-  console.log(enemy, letterIndex);
+const Word = ({ word, letterIndex }) => {
+  console.log(word, letterIndex);
   // Color the text to determine which letter is active
-  const colorEnemyText = (enemy, letterIndex) => {
+  const colorWordText = (word, letterIndex) => {
     let style,
-      oldText = enemy.split(""),
+      oldText = word.split(""),
       newText = [];
 
     const spanText = (letter, style, index) =>
@@ -25,10 +25,10 @@ const Enemy = ({ enemy, letterIndex }) => {
   };
 
   return (
-    <div className="enemyContainer">
-      {colorEnemyText(enemy, letterIndex)}
+    <div className="wordContainer">
+      {colorWordText(word, letterIndex)}
     </div>
   )
 };
 
-export default Enemy;
+export default Word;

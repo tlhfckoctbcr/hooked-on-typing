@@ -1,5 +1,6 @@
 import React, { useContext, useReducer } from "react";
 import Board from "../Board";
+import Menu from "../Menu";
 import GameContext from "../../state/contexts/game.context";
 import BoardContext from "../../state/contexts/board.context";
 import ShipContext from "../../state/contexts/ship.context";

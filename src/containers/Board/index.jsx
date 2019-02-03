@@ -2,23 +2,30 @@ import React, { useContext, useEffect } from "react";
 import BoardContext from "../../state/contexts/board.context";
 import { constants } from "../../state/constants";
 import KeyPressHelper from "../../utils/KeyPressHelper";
-import Enemy from "../../components/Enemy";
+import Word from "../../components/Word";
 import Ship from "../Ship";
 
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
 
-  const activeEnemy = state.enemies[state.activeEnemyIndex];
-  const activeLetter = activeEnemy[state.activeEnemyLetterIndex];
-
   KeyPressHelper.dispatch = value => dispatch({ type: constants.CHANGE_LAST_KEY_PRESS, payload: value });
 
   useEffect(() => {
+    dispatch({ type: constants.GET_WORD_LIST });
+  }, []);
+
+  // LastKeyPress watcher
+  useEffect(() => {
+    if (!state.words.length) return;
+
+    const activeWord = state.words[state.activeWordIndex];
+    const activeLetter = activeWord[state.activeWordLetterIndex];
+
     if (state.lastKeyPress === activeLetter) {
-      if (activeEnemy.length === state.activeEnemyLetterIndex + 1) {
-        dispatch({ type: constants.CHANGE_ACTIVE_ENEMY, payload: state.activeEnemyIndex + 1 });
+      if (activeWord.length === state.activeWordLetterIndex + 1) {
+        dispatch({ type: constants.CHANGE_ACTIVE_WORD, payload: state.activeWordIndex + 1 });
       } else {
-        dispatch({ type: constants.KEY_PRESS_SUCCESS, payload: state.activeEnemyLetterIndex + 1 });
+        dispatch({ type: constants.KEY_PRESS_SUCCESS, payload: state.activeWordLetterIndex + 1 });
       }
     } else {
       dispatch({ type: constants.KEY_PRESS_FAILURE });
@@ -27,12 +34,15 @@ const Board = () => {
 
   return (
     <div {...KeyPressHelper.events} className="boardContainer" tabIndex={1}>
-      <Ship />
-      {state.lastKeyPress}
-      <Enemy
-        enemy={activeEnemy}
-        letterIndex={state.activeEnemyLetterIndex}
-      />
+      {
+        !!state.words.length &&
+        <>
+          <Word
+            word={state.words[state.activeWordIndex]}
+            letterIndex={state.activeWordLetterIndex}
+          />
+        </>
+      }
     </div>
   )
 };
