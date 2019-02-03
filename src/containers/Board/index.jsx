@@ -3,7 +3,6 @@ import BoardContext from "../../state/contexts/board.context";
 import { constants } from "../../state/constants";
 import KeyPressHelper from "../../utils/KeyPressHelper";
 import Word from "../../components/Word";
-import Ship from "../Ship";
 
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
