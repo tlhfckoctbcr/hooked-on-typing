@@ -1,7 +1,12 @@
 import React, { createContext } from "react";
 
 const GameContext = createContext({
-  status: "inactive"
+  status: "ready",
+  difficulty: {
+    game: "easy",
+    word: "easy"
+  },
+  type: "endless"
 });
 
 export default GameContext;

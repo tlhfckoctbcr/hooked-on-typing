@@ -1,28 +1,33 @@
 import React from "react";
 
 const Enemy = ({ enemy, letterIndex }) => {
+  console.log(enemy, letterIndex);
   // Color the text to determine which letter is active
   const colorEnemyText = (enemy, letterIndex) => {
-    let oldText = enemy.split(""), newText = [];
+    let style,
+      oldText = enemy.split(""),
+      newText = [];
+
+    const spanText = (letter, style, index) =>
+      <span key={index} style={style}>{letter}</span>;
+
     for (const [index, letter] of oldText.entries()) {
-      if (index === letterIndex) {
-        newText.push(<span style={{ color: "gray" }}>{letter}</span>);
-      } else if (index < letterIndex) {
-        newText.push(<span style={{ color: "green" }}>{letter}</span>)
-      } else {
-        newText.push(<span style={{ color: "white" }}>{letter}</span>)
-      }
+      if (index === letterIndex)
+        style = { color: "gray" };
+      else if (index < letterIndex)
+        style = { color: "black" };
+      else
+        style = { color: "white" };
+      newText.push(spanText(letter, style, index));
     }
 
-    if (newText.length) {
-      return newText.map(text => (text));
-    } else {
-      return enemy;
-    }
+    return newText.map(text => (text));
   };
 
   return (
-    <>{colorEnemyText(enemy, letterIndex)}</>
+    <div className="enemyContainer">
+      {colorEnemyText(enemy, letterIndex)}
+    </div>
   )
 };
 

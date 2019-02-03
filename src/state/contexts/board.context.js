@@ -2,7 +2,8 @@ import React, { createContext } from "react";
 
 const BoardContext = createContext({
   lastKeyPress: "",
-  enemies: ["foo", "bar", "baz", "sit", "poo"],
+  enemies: ["fot", "bar", "baz", "sit", "pot"],
+  errorCounter: 0,
   activeEnemyIndex: 0,
   activeEnemyLetterIndex: 0
 });
