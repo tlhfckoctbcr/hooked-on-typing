@@ -4,7 +4,7 @@ import { constants } from "../../state/constants";
 import KeyPressHelper from "../../utils/KeyPressHelper";
 import Word from "../../components/Word";
 
-const Board = () => {
+export default function Board() {
   const { state, dispatch } = useContext(BoardContext);
   const { words, activeWordIndex, activeWordLetterIndex, lastKeyPress, pressCounter, error } = state;
 
@@ -38,11 +38,11 @@ const Board = () => {
             {
               [...Array(3)].map((_, i) => (
                 <Word
-                  key={i}
                   word={words[activeWordIndex+(i)]}
                   letterIndex={activeWordLetterIndex}
                   positionIndex={i}
                   error={error}
+                  key={i}
                 />
               ))
             }
@@ -52,4 +52,3 @@ const Board = () => {
   )
 };
 
-export default Board;

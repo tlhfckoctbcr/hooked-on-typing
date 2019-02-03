@@ -1,6 +1,6 @@
 import React from "react";
 
-const Word = ({ word, letterIndex, positionIndex, error }) => {
+export default function Word({ word, letterIndex, positionIndex, error }) {
   if (!word) return <></>;
 
   // Color the text to determine which letter is active
@@ -15,7 +15,9 @@ const Word = ({ word, letterIndex, positionIndex, error }) => {
     for (const [index, letter] of oldText.entries()) {
       if (positionIndex === 0) {
         if (index === letterIndex)
-          style = error ? { color: "red" } : { color: "#555" };
+          style = error
+            ? { color: "red", backgroundColor: "black" }
+            : { color: "#333", backgroundColor: "black" };
         else if (index < letterIndex)
           style = { color: "green" };
         else
@@ -31,9 +33,9 @@ const Word = ({ word, letterIndex, positionIndex, error }) => {
   };
 
   const style = i => {
-    if (i === 0) return { top: "100px" };
-    else if (i === 1) return { top: "250px" };
-    else return { top: "400px" };
+    if (i === 0) return { top: "100px", fontSize: "100px" };
+    else if (i === 1) return { top: "250px", fontSize: "75px" };
+    else return { top: "375px", fontSize: "75px" };
   };
 
   return (
@@ -42,5 +44,3 @@ const Word = ({ word, letterIndex, positionIndex, error }) => {
     </div>
   )
 };
-
-export default Word;
