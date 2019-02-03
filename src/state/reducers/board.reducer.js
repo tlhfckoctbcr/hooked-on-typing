@@ -11,7 +11,8 @@ const BoardReducer = (state, action) => {
     case constants.CHANGE_LAST_KEY_PRESS:
       return {
         ...state,
-        lastKeyPress: action.payload
+        lastKeyPress: action.payload,
+        pressCounter: state.pressCounter + 1
       };
     case constants.CHANGE_ACTIVE_WORD:
       return {

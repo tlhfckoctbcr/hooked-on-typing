@@ -7,13 +7,14 @@ import Word from "../../components/Word";
 const Board = () => {
   const { state, dispatch } = useContext(BoardContext);
 
-  KeyPressHelper.dispatch = value => dispatch({ type: constants.CHANGE_LAST_KEY_PRESS, payload: value });
+  KeyPressHelper.dispatch = value =>
+    dispatch({ type: constants.CHANGE_LAST_KEY_PRESS, payload: value });
 
-  useEffect(() => {
-    dispatch({ type: constants.GET_WORD_LIST });
-  }, []);
+  // Initialize and collect words for the game
+  useEffect(() =>
+    dispatch({ type: constants.GET_WORD_LIST }), []);
 
-  // LastKeyPress watcher
+  // LastKeyPress Water
   useEffect(() => {
     if (!state.words.length) return;
 
@@ -21,26 +22,23 @@ const Board = () => {
     const activeLetter = activeWord[state.activeWordLetterIndex];
 
     if (state.lastKeyPress === activeLetter) {
-      if (activeWord.length === state.activeWordLetterIndex + 1) {
+      if (activeWord.length === state.activeWordLetterIndex + 1)
         dispatch({ type: constants.CHANGE_ACTIVE_WORD, payload: state.activeWordIndex + 1 });
-      } else {
+      else
         dispatch({ type: constants.KEY_PRESS_SUCCESS, payload: state.activeWordLetterIndex + 1 });
-      }
     } else {
       dispatch({ type: constants.KEY_PRESS_FAILURE });
     }
-  }, [state.lastKeyPress]);
+  }, [state.pressCounter]);
 
   return (
-    <div {...KeyPressHelper.events} className="boardContainer" tabIndex={1}>
+    <div {...KeyPressHelper.events} className="boardContainer" tabIndex={0}>
       {
         !!state.words.length &&
-        <>
-          <Word
-            word={state.words[state.activeWordIndex]}
-            letterIndex={state.activeWordLetterIndex}
-          />
-        </>
+        <Word
+          word={state.words[state.activeWordIndex]}
+          letterIndex={state.activeWordLetterIndex}
+        />
       }
     </div>
   )

@@ -6,6 +6,9 @@ KeyPressHelper.config = config => {
   KeyPressHelper.dispatch = config.dispatch;
 };
 
+// Events will be tied to <div> by using a spread
+// operator, so we will suppress this warning.
+// noinspection JSUnusedGlobalSymbols
 KeyPressHelper.events = {
   onKeyDown: e => {
     KeyPressHelper.dispatch(KeyCodes[e.keyCode]);
