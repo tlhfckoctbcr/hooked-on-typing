@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import Button from "../Button";
-import Input from "../Input";
+import Button from "../../components/Button";
+import Input from "../../components/Input";
 import GameContext from "../../state/contexts/game.context";
 import { constants } from "../../state/constants";
 
 const Menu = () => {
   const { state, dispatch } = useContext(GameContext);
-  console.log(state);
 
   return (
     <>

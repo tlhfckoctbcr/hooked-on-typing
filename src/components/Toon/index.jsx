@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ToonContext from "../../state/contexts/toon.context";
 
 const Toon = () => {
-  const { state, dispatch } = useContext(ToonContext);
+  const { state } = useContext(ToonContext);
 
   return (
     <div style={{
