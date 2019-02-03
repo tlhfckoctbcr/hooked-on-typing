@@ -1,8 +1,14 @@
 import { KeyCodes } from "./KeyCodes";
 
-let KeyPressHelper = {
-  events: {
-    onKeyDown: e => KeyCodes[e.keyCode]
+let KeyPressHelper = {};
+
+KeyPressHelper.config = config => {
+  KeyPressHelper.dispatch = config.dispatch;
+};
+
+KeyPressHelper.events = {
+  onKeyDown: e => {
+    KeyPressHelper.dispatch(KeyCodes[e.keyCode]);
   }
 };
 

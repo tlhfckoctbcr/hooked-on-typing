@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import ToonContext from "../../state/contexts/toon.context";
+import BoardContext from "../../state/contexts/board.context";
 
 const Controls = () => {
-  const { state } = useContext(ToonContext);
+  const { state } = useContext(BoardContext);
 
   return (
     <>{state.position.positionX} {state.position.positionY}</>

@@ -1,6 +1,6 @@
 import { constants } from "../constants";
 
-const ToonReducer = (state, action) => {
+const BoardReducer = (state, action) => {
   switch (action.type) {
     case constants.CHANGE_POSITION:
       console.log("Change Position");
@@ -13,4 +13,4 @@ const ToonReducer = (state, action) => {
   }
 };
 
-export default ToonReducer;
+export default BoardReducer;

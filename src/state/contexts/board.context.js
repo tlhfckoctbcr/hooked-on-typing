@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 
-const ToonContext = createContext({
+const BoardContext = createContext({
   position: {
     positionX: 0,
     positionY: 0
@@ -8,4 +8,4 @@ const ToonContext = createContext({
   direction: "right"
 });
 
-export default ToonContext;
+export default BoardContext;
