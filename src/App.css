@@ -41,7 +41,7 @@ body {
 .scoreContainer {
     width: 100%;
     height: 50%;
-    font-size: 4vw;
+    font-size: 3vw;
     color: #222;
     background-color: #EEE;
     display: flex;
@@ -56,18 +56,17 @@ body {
 
 .scoreContainer ul li {
     text-decoration: none;
-    margin-bottom: 25px;
 }
 
 .resetButton {
     background-color: #222;
-    border: 1px solid #222;
+    border: 1px solid white;
     display: inline-block;
     cursor: pointer;
     color: #EEE;
     font-family: "Press Start 2P", serif;
-    font-size: 4vw;
-    padding: 12px 24px;
+    font-size: 3vw;
+    padding: 0;
     text-decoration: none;
 }
 .resetButton:hover {
