@@ -33,9 +33,9 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
   };
 
   const style = i => {
-    if (i === 0) return { top: "100px", fontSize: "110px" };
-    else if (i === 1) return { top: "250px", fontSize: "75px" };
-    else return { top: "375px", fontSize: "75px" };
+    if (i === 0) return { top: "100px", fontSize: "5vw" };
+    else if (i === 1) return { top: "250px", fontSize: "4vw" };
+    else return { top: "375px", fontSize: "4vw" };
   };
 
   return (

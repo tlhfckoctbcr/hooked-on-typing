@@ -1,4 +1,9 @@
 {
   "name": "react-hooks",
-  "version": 2
+  "alias": ["king-post-studio-hooks-demo"],
+  "version": 2,
+  "github": {
+    "enabled": true,
+    "autoAlias": true
+  }
 }
