@@ -24,12 +24,7 @@ export default function App() {
 
   return (
     <div {...KeyPressHelper.events} id="game" className="gameContainer" tabIndex={0}>
-      <GameContext.Provider
-        value={{
-          state: state,
-          dispatch: dispatch
-        }}
-      >
+      <GameContext.Provider value={{ state, dispatch }}>
         <Board />
         <Score />
       </GameContext.Provider>
