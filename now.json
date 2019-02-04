@@ -1,7 +1,4 @@
 {
-  "name": "react-hooks-example",
-  "version": 2,
-  "builds": [
-    { "src": "./dist", "use": "@now/static-build" }
-  ]
+  "name": "react-hooks",
+  "version": 2
 }

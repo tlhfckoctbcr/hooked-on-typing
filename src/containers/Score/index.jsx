@@ -20,7 +20,7 @@ export default function Score() {
       <ul>
         <li>words: {state.activeWordIndex}</li>
         <li>errors: {state.errorCounter}</li>
-        <li>rate: {calcErrorRate(state.errorCounter, state.pressCounter)}</li>
+        <li>hit%: {calcErrorRate(state.errorCounter, state.pressCounter)}</li>
         {
           !!state.words.length &&
           <li>

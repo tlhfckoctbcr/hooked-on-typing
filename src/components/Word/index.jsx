@@ -19,7 +19,7 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
             ? { color: "red", backgroundColor: "black" }
             : { color: "#444", backgroundColor: "black" };
         else if (index < letterIndex)
-          style = { color: "#222" };
+          style = { color: "#00ff48" };
         else
           style = { color: "#eee" };
       } else {
@@ -33,7 +33,7 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
   };
 
   const style = i => {
-    if (i === 0) return { top: "100px", fontSize: "100px" };
+    if (i === 0) return { top: "100px", fontSize: "110px" };
     else if (i === 1) return { top: "250px", fontSize: "75px" };
     else return { top: "375px", fontSize: "75px" };
   };
