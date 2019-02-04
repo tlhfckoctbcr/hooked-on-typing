@@ -2,7 +2,8 @@
   "name": "react-hooks",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack-dev-server --mode development"
+    "dev": "webpack-dev-server --mode development",
+    "start": "webpack-dev-server --mode production"
   },
   "dependencies": {
     "random-words": "^1.1.0",

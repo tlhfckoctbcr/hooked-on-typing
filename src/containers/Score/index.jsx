@@ -18,6 +18,7 @@ export default function Score() {
   return (
     <div className="scoreContainer">
       <ul>
+        <li>words: {state.activeWordIndex}</li>
         <li>errors: {state.errorCounter}</li>
         <li>rate: {calcErrorRate(state.errorCounter, state.pressCounter)}</li>
         {

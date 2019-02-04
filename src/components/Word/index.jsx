@@ -15,15 +15,15 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
     for (const [index, letter] of oldText.entries()) {
       if (positionIndex === 0) {
         if (index === letterIndex)
-          style = error && letterIndex
+          style = error
             ? { color: "red", backgroundColor: "black" }
-            : { color: "#333", backgroundColor: "black" };
+            : { color: "#444", backgroundColor: "black" };
         else if (index < letterIndex)
           style = { color: "#222" };
         else
-          style = { color: "#EEE" };
+          style = { color: "#eee" };
       } else {
-        style = { color: "#EEE" };
+        style = { color: "#444" };
       }
 
       newText.push(spanText(letter, style, index));

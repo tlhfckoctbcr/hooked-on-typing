@@ -8,7 +8,7 @@ const GameReducer = (state, action) => {
       return {
         ...state,
         active: true,
-        words: randomWords(100)
+        words: randomWords(1000)
       };
     case gameConstants.RESET_GAME:
       return {
@@ -24,6 +24,7 @@ const GameReducer = (state, action) => {
     case gameConstants.CHANGE_ACTIVE_WORD:
       return {
         ...state,
+        error: false,
         activeWordIndex: action.payload,
         activeWordLetterIndex: 0
       };
