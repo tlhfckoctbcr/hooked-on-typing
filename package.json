@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "webpack-dev-server --mode development",
-    "start": "webpack-dev-server --open",
-    "build": "npm run clean && npm run compile",
-    "clean": "rm -rf ./build/index.bundle.js",
-    "compile": "NODE_ENV=production webpack --config ./webpack.config.js --progress"
+    "compile": "webpack --config ./webpack.config.js --progress",
+    "now-build": "npm run compile"
   },
   "dependencies": {
     "random-words": "^1.1.0",

@@ -1,12 +1,7 @@
 {
-  "type": "static",
-  "version": 1,
-  "static": {
-    "rewrites": [
-      {
-        "source": "**",
-        "destination": "/public/index.html"
-      }
-    ]
-  }
+  "name": "react-hooks-example",
+  "version": 2,
+  "builds": [
+    { "src": "package.json", "use": "@now/static-build" }
+  ]
 }
