@@ -16,10 +16,10 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
       if (positionIndex === 0) {
         if (index === letterIndex)
           style = error
-            ? { color: "red", backgroundColor: "black" }
+            ? { color: "#cf4635", backgroundColor: "black" }
             : { color: "#444", backgroundColor: "black" };
         else if (index < letterIndex)
-          style = { color: "#00ff48" };
+          style = { color: "#80ff7c" };
         else
           style = { color: "#eee" };
       } else {
