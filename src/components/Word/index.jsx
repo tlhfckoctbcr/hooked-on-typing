@@ -6,13 +6,13 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
   // Color the text to determine which letter is active
   const colorWordText = (word, letterIndex) => {
     let style,
-      oldText = word.split(""),
-      newText = [];
+      newText,
+      oldText = word.split("");
 
     const spanText = (letter, style, index) =>
       <span key={index} style={style}>{letter}</span>;
 
-    for (const [index, letter] of oldText.entries()) {
+    newText = oldText.map((letter, index) => {
       if (positionIndex === 0) {
         if (index === letterIndex)
           style = error
@@ -25,22 +25,20 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
       } else {
         style = { color: "#444" };
       }
-
-      newText.push(spanText(letter, style, index));
-    }
+      return spanText(letter, style, index);
+    });
 
     return newText.map(text => (text));
   };
 
   const style = i => {
-    if (i === 0) return { top: "100px", fontSize: "5vw" };
-    else if (i === 1) return { top: "250px", fontSize: "4vw" };
-    else return { top: "375px", fontSize: "4vw" };
+    if (i === 0) return { fontSize: "5vw" };
+    else return { fontSize: "4vw" };
   };
 
   return (
     <div className="wordContainer" style={style(positionIndex)}>
-      {colorWordText(word, letterIndex)}
+      {!positionIndex ? ">:" : ""}{colorWordText(word, letterIndex)}
     </div>
   )
 };
