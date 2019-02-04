@@ -12,7 +12,7 @@ export default function Score() {
 
   const reset = () => {
     dispatch({ type: gameConstants.RESET_GAME });
-    document.getElementById("board").focus();
+    document.getElementById("game").focus();
   };
 
   return (

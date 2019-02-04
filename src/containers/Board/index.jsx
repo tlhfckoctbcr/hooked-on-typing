@@ -1,24 +1,11 @@
 import React, { useContext, useEffect } from "react";
 import GameContext from "../../state/game.context";
 import { gameConstants } from "../../state/game.constants";
-import KeyPressHelper from "../../utils/KeyPressHelper";
 import Word from "../../components/Word";
 
 export default function Board() {
   const { state, dispatch } = useContext(GameContext);
   const { active, error, activeWordIndex, activeWordLetterIndex, lastKeyPress, pressCounter, words } = state;
-
-  KeyPressHelper.dispatch = value => {
-    if (value === "enter" && !active)
-      dispatch({ type: gameConstants.START_GAME });
-    else
-      if (active)
-      dispatch({ type: gameConstants.CHANGE_LAST_KEY_PRESS, payload: value });
-  };
-
-  useEffect(() => {
-    document.getElementById("board").focus();
-  }, []);
 
   useEffect(() => {
     if (!words.length || !active)
@@ -38,7 +25,7 @@ export default function Board() {
   }, [pressCounter]);
 
   return (
-    <div {...KeyPressHelper.events} id="board" className="boardContainer" tabIndex={0}>
+    <div id="board" className="boardContainer">
       {
         !!words.length &&
           <>
