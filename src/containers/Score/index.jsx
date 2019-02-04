@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import GameContext from "../../state/game.context";
-import {gameConstants} from "../../state/game.constants";
+import { gameConstants } from "../../state/game.constants";
 
 export default function Score() {
   const { state, dispatch } = useContext(GameContext);

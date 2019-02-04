@@ -1,0 +1,12 @@
+{
+  "type": "static",
+  "version": 1,
+  "static": {
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/public/index.html"
+      }
+    ]
+  }
+}

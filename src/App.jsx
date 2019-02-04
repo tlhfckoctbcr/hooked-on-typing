@@ -3,9 +3,9 @@ import Board from "./containers/Board";
 import Score from "./containers/Score";
 import GameContext from "./state/game.context";
 import GameReducer from "./state/game.reducer";
+import { gameConstants } from "./state/game.constants";
 import KeyPressHelper from "./utils/KeyPressHelper";
 import "./App.css";
-import {gameConstants} from "./state/game.constants";
 
 export default function App() {
   const [state, dispatch] = useReducer(GameReducer, useContext(GameContext));
