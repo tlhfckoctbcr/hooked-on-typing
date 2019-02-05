@@ -40,6 +40,11 @@ const GameReducer = (state, action) => {
         error: true,
         errorCounter: state.errorCounter + 1
       };
+    case gameConstants.DECREMENT_TIMER:
+      return {
+        ...state,
+        timeRemaining: state.timeRemaining - 1
+      };
     default:
       return state;
   }

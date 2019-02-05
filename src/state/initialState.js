@@ -6,5 +6,6 @@ export const initialState = {
   errorCounter: 0,
   activeWordIndex: 0,
   activeWordLetterIndex: 0,
+  timeRemaining: 60,
   words: []
 };
