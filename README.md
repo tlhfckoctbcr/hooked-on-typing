@@ -1,10 +1,11 @@
-# react-hooks
+# hooked-on-typing
 
 A React typing game built using React's new hooks API.
 
 ## How to Run Locally
 ```sh
 git clone ...
+cd hooked-on-typing
 npm i
 npm run dev
 localhost:3000
