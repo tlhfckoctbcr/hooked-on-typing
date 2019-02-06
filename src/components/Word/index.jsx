@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Word({ word, letterIndex, positionIndex, error }) {
+export default function Word({ word, letterIndex, positionIndex, pressError }) {
   if (!word) return <></>;
 
   // Color the text to determine which letter is active
@@ -15,7 +15,7 @@ export default function Word({ word, letterIndex, positionIndex, error }) {
     newText = oldText.map((letter, index) => {
       if (positionIndex === 0) {
         if (index === letterIndex)
-          style = error
+          style = pressError
             ? { color: "#cf4635", backgroundColor: "black" }
             : { color: "#444", backgroundColor: "black" };
         else if (index < letterIndex)

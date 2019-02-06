@@ -1,19 +1,34 @@
 import { gameConstants } from "./game.constants";
 import { initialState } from "./initialState";
-import randomWords from "random-words";
 
 const GameReducer = (state, action) => {
+  console.log("DISPATCH: " + action.type);
   switch (action.type) {
     case gameConstants.START_GAME:
       return {
         ...state,
-        active: true,
-        words: randomWords(1000)
+        active: true
       };
     case gameConstants.RESET_GAME:
       return {
-        ...initialState,
-        active: false
+        ...initialState
+      };
+    case gameConstants.GET_WORDS_REQUEST:
+      return {
+        ...state,
+        loading: true
+      };
+    case gameConstants.GET_WORDS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        words: action.payload
+      };
+    case gameConstants.GET_WORDS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        error: true
       };
     case gameConstants.CHANGE_LAST_KEY_PRESS:
       return {
@@ -21,29 +36,32 @@ const GameReducer = (state, action) => {
         lastKeyPress: action.payload,
         pressCounter: state.pressCounter + 1
       };
-    case gameConstants.CHANGE_ACTIVE_WORD:
-      return {
-        ...state,
-        error: false,
-        activeWordIndex: action.payload,
-        activeWordLetterIndex: 0
-      };
     case gameConstants.KEY_PRESS_SUCCESS:
       return {
         ...state,
-        error: false,
+        pressError: false,
         activeWordLetterIndex: action.payload
       };
     case gameConstants.KEY_PRESS_FAILURE:
       return {
         ...state,
-        error: true,
+        pressError: true,
         errorCounter: state.errorCounter + 1
       };
-    case gameConstants.DECREMENT_TIMER:
+    case gameConstants.CHANGE_ACTIVE_WORD:
       return {
         ...state,
-        timeRemaining: state.timeRemaining - 1
+        pressError: false,
+        activeWordIndex: action.payload,
+        activeWordLetterIndex: 0
+      };
+    case gameConstants.TICK:
+      const value = state.timerDirection === "desc"
+        ? state.timer - 1
+        : state.timer + 1;
+      return {
+        ...state,
+        timer: value
       };
     default:
       return state;

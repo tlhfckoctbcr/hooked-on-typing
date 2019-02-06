@@ -5,7 +5,16 @@ import Word from "../../components/Word";
 
 export default function Board() {
   const { state, dispatch } = useContext(GameContext);
-  const { active, error, activeWordIndex, activeWordLetterIndex, lastKeyPress, pressCounter, words } = state;
+  const {
+    active,
+    pressError,
+    activeWordIndex,
+    activeWordLetterIndex,
+    lastKeyPress,
+    pressCounter,
+    words,
+    loading
+  } = state;
 
   useEffect(() => {
     if (!words.length || !active)
@@ -16,9 +25,15 @@ export default function Board() {
 
     if (lastKeyPress === activeLetter) {
       if (activeWord.length === activeWordLetterIndex + 1)
-        dispatch({ type: gameConstants.CHANGE_ACTIVE_WORD, payload: activeWordIndex + 1 });
+        dispatch({
+          type: gameConstants.CHANGE_ACTIVE_WORD,
+          payload: activeWordIndex + 1
+        });
       else
-        dispatch({ type: gameConstants.KEY_PRESS_SUCCESS, payload: activeWordLetterIndex + 1 });
+        dispatch({
+          type: gameConstants.KEY_PRESS_SUCCESS,
+          payload: activeWordLetterIndex + 1
+        });
     } else {
       dispatch({ type: gameConstants.KEY_PRESS_FAILURE });
     }
@@ -30,12 +45,12 @@ export default function Board() {
         !!words.length &&
           <>
             {
-              [...Array(3)].map((_, i) => (
+              [...Array(4)].map((_, i) => (
                 <Word
                   word={words[activeWordIndex+(i)]}
                   letterIndex={activeWordLetterIndex}
                   positionIndex={i}
-                  error={error}
+                  pressError={pressError}
                   key={i}
                 />
               ))
@@ -45,7 +60,7 @@ export default function Board() {
       {
         !words.length &&
           <div className="start">
-            Press enter to begin.
+            { loading ? "READY" : "press enter to begin." }
           </div>
       }
     </div>
