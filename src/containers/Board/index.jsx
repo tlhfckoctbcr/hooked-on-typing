@@ -12,6 +12,7 @@ export default function Board() {
     activeWordLetterIndex,
     lastKeyPress,
     pressCounter,
+    timer,
     words,
     loading
   } = state;
@@ -42,26 +43,37 @@ export default function Board() {
   return (
     <div id="board" className="boardContainer">
       {
-        !!words.length &&
-          <>
-            {
-              [...Array(4)].map((_, i) => (
-                <Word
-                  word={words[activeWordIndex+(i)]}
-                  letterIndex={activeWordLetterIndex}
-                  positionIndex={i}
-                  pressError={pressError}
-                  key={i}
-                />
-              ))
-            }
-          </>
+        !!active &&
+        <>
+          {
+            !!timer &&
+            <>
+              {
+                [...Array(4)].map((_, i) => (
+                  <Word
+                    word={words[activeWordIndex+(i)]}
+                    letterIndex={activeWordLetterIndex}
+                    positionIndex={i}
+                    pressError={pressError}
+                    key={i}
+                  />
+                ))
+              }
+            </>
+          }
+          {
+            !timer &&
+            <div className="start">
+              { "GAME OVER" }
+            </div>
+          }
+        </>
       }
       {
-        !words.length &&
-          <div className="start">
-            { loading ? "READY" : "press enter to begin." }
-          </div>
+        !active &&
+        <div className="start">
+          { loading ? "READY" : "press enter to begin." }
+        </div>
       }
     </div>
   )
