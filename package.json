@@ -10,7 +10,7 @@
     "random-words": "1.1.0",
     "react": "16.12.0",
     "react-dom": "16.12.0",
-    "serve": "10.1.1"
+    "serve": "11.3.0"
   },
   "devDependencies": {
     "@babel/cli": "7.8.4",
