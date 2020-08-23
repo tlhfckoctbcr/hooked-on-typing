@@ -1,9 +1,0 @@
-{
-  "name": "hooked-on-typing",
-  "alias": ["hooked-on-typing"],
-  "version": 2,
-  "github": {
-    "enabled": true,
-    "autoAlias": true
-  }
-}

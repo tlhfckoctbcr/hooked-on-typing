@@ -2,7 +2,6 @@ import { gameConstants } from "./game.constants";
 import { initialState } from "./initialState";
 
 const GameReducer = (state, action) => {
-  console.log("DISPATCH: " + action.type);
   switch (action.type) {
     case gameConstants.START_GAME:
       return {
