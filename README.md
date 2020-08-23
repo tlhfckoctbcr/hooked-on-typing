@@ -1,14 +1,14 @@
-# hooked-on-typing
+# ⌨️ Hooked on Typing
 
-A React typing game built using React's new hooks API.
+A React typing game built using React's hooks API.
 
 ## How to Run Locally
 ```sh
 git clone ...
 cd hooked-on-typing
-npm i
-npm run dev
-localhost:3000
+yarn
+yarn start
+localhost:1234
 ```
 
 ## How to Play
